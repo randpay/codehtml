@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Kembali</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+		<!-- boostrap css -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/danizevaro/game-v1@e7b2b3e28082729c2d3db894eb4f1fb1c88949e9/zone.0.0.2.css">
+		<style>
+		html{
+		  background-color: #ededf7;
+		}
+:root {
+  --header-color: #283593;
+  --button-check-color: #283593;
+  --result-text-color: #283593;
+  --category-color: #283593;
+  --active-product-color: #283593;
+  --active-product-text-color: #fff;
+  --purchase-harga-color: #283593;
+  --button-purchase-color: #283593;
+  --bg-card-img: ;
+}
+
+.list-group-item{
+   box-shadow: 5px 5px 5px 0 rgb(0,0,0,0.4);
+   margin: auto;
+   width: 95%;
+}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="atas"></div>
+			<form class="form-nomor-telepon" onsubmit="return false">
+				<div class="form-input">
+					<div class="form-inout-body">
+						<img class="img-game" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmKZBoBfxMCAqp0_9gVCwDwSCKPkooniDXQ&usqp=CAU" alt="" />
+						<span class="text-game">Mobile Legends</span>
+					</div>
+					<div class="wrapper-input-notelp">
+						<input type="text" class="input-nomor-telepon id" placeholder="Masukkan ID Player..." id="nomor-telepon" autocomplete="off" />
+					</div>
+					<p class="box wrap-zone">
+						<input id="zoneId" class="zone" type="number" placeholder="Masukkan Zone ID..." />
+					</p>
+					<button id="check-id" class="cek-id">CEK ID</button>
+					<p class="box wrap-hasil-username">
+					<div id="cek">Username</div>
+					</p>
+				</div>
+				<button type="submit" hidden>Submit</button>
+			</form>
+			<form action="" method="get" accept-charset="utf-8" class="form-kategori">
+				<div class="form-select form-select-lg mb-3 dropdown-center" aria-label=".form-select-lg example" data-bs-toggle="dropdown" aria-expanded="false">
+					<img id="card-img-operator" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmKZBoBfxMCAqp0_9gVCwDwSCKPkooniDXQ&usqp=CAU" alt="" />
+					<div class="d-flex align-items-center">
+						<p id="kategori-pilihan"></p>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28">
+							<path fill="none" d="M0 0h24v24H0z" />
+							<path d="M12 14l-4-4h8z" fill="rgba(255,255,255,1)" />
+						</svg>
+					</div>
+				</div>
+				<ul class="dropdown-menu" id="list-kategori"></ul>
+			</form>
+		</header>
+
+		<div style="margin-top: 370px; padding-bottom: 90px" class="container">
+			<ul class="list-group" id="list-produk"></ul>
+		</div>
+
+		<div class="loader" id="loader-kategori">
+		 <center>
+			<svg width="90" height="90" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#283593">
+    <g fill="none" fill-rule="evenodd" stroke-width="2">
+        <circle cx="22" cy="22" r="1">
+            <animate attributeName="r"
+                begin="0s" dur="1.8s"
+                values="1; 20"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.165, 0.84, 0.44, 1"
+                repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity"
+                begin="0s" dur="1.8s"
+                values="1; 0"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.3, 0.61, 0.355, 1"
+                repeatCount="indefinite" />
+        </circle>
+        <circle cx="22" cy="22" r="1">
+            <animate attributeName="r"
+                begin="-0.9s" dur="1.8s"
+                values="1; 20"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.165, 0.84, 0.44, 1"
+                repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity"
+                begin="-0.9s" dur="1.8s"
+                values="1; 0"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.3, 0.61, 0.355, 1"
+                repeatCount="indefinite" />
+        </circle>
+    </g>
+</svg>
+   </center>
+		</div>
+		<div class="container loader" id="load">
+		 <center>
+			<svg width="90" height="90" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#283593">
+    <g fill="none" fill-rule="evenodd" stroke-width="2">
+        <circle cx="22" cy="22" r="1">
+            <animate attributeName="r"
+                begin="0s" dur="1.8s"
+                values="1; 20"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.165, 0.84, 0.44, 1"
+                repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity"
+                begin="0s" dur="1.8s"
+                values="1; 0"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.3, 0.61, 0.355, 1"
+                repeatCount="indefinite" />
+        </circle>
+        <circle cx="22" cy="22" r="1">
+            <animate attributeName="r"
+                begin="-0.9s" dur="1.8s"
+                values="1; 20"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.165, 0.84, 0.44, 1"
+                repeatCount="indefinite" />
+            <animate attributeName="stroke-opacity"
+                begin="-0.9s" dur="1.8s"
+                values="1; 0"
+                calcMode="spline"
+                keyTimes="0; 1"
+                keySplines="0.3, 0.61, 0.355, 1"
+                repeatCount="indefinite" />
+        </circle>
+    </g>
+</svg>
+</center>
+		</div>
+
+		<!-- Popup pembelian -->
+    <div id="popup-pembelian">
+      <div>
+        <span>Total Pembelian</span>
+        <span id="total-pembelian">Rp50.000</span>
+      </div>
+      <a href="#" id="btn-purchase">Beli</a>
+    </div>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/danizevaro/api@3f78bb290675d7a5832dc9c199025af1854f4450/bukaolshop.v1.min.js"></script>
+		 <script type="text/javascript" charset="utf-8">
+//atur script di bawah ini :
+//kode aktivasi
+const aktivasi = '825d87b96c09f1e2714c3ba2f7b5eb7a26c739eba8f387c2f9d7fee01964158d';
+//tipe game
+const games  = 'mobilelegends'
+//versi
+const versi = "v1"
+      
+// untuk mengatur kategori 
+	let data = [ 
+				{
+					nama: 'Diamond Mobile Legend',
+					url_kategori: 'mobile-legend-309162',
+					gambar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmKZBoBfxMCAqp0_9gVCwDwSCKPkooniDXQ&usqp=CAU',
+				},
+				{
+					nama: 'Membership Mobile Legend',
+					url_kategori: 'membership-ml-360476',
+					gambar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmKZBoBfxMCAqp0_9gVCwDwSCKPkooniDXQ&usqp=CAU',
+				},
+				{
+					nama: 'MLBB PROMO',
+					url_kategori: 'mlbb-promo-363448',
+					gambar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcmKZBoBfxMCAqp0_9gVCwDwSCKPkooniDXQ&usqp=CAU',
+				},
+			];
+			function cekKategori() {
+				var kategori = data;
+				$.each(kategori, function (i, data) {
+					$('#list-kategori').append(
+						`<li onclick="dataklik('` +
+							data.url_kategori +
+							`', '` +
+							data.nama +
+							`', '` +
+							data.gambar +
+							`')"><div class="container row_pilihan">` +
+							`<img src="${data.gambar}" class="img-category-product" />` +
+							`<h5>` +
+							data.nama +
+							`</h5></div></li>`
+					);
+				});
+
+				$('#list-kategori').prepend('<span class="text-category"> PRODUK </span>');
+				$('#loader-kategori').hide();
+			}
+			cekKategori();
+
+			// url web
+			var url = api + versi + '/' + aktivasi + '/';
+			// keluarkan kategori
+			function kategori(index, val) {
+				var kategori = data[index].val;
+				return kategori;
+			}
+
+			// looping tampilan desain list produk
+        function looping(lopp) {
+          const {harga, nama, url } = lopp;
+          $('#list-produk').append(`
+			<li class="list-group-item d-flex justify-content-between align-items-center" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" id="diklik" aria-details="${url}">` + `
+				<div>` + nama + `</div>` + `
+				<span class="badge rounded-pill">` + harga + `</span>
+			</li>`);
+          $('#load').hide();
+          const listGroupItems = document.querySelectorAll('.list-group .list-group-item');
+        }
+       var _0xf710 = ["\x73\x63\x72\x69\x70\x74\x20\x64\x69\x20\x62\x75\x61\x74\x20\x6F\x6C\x65\x68\x20\x77\x77\x77\x2E\x64\x6F\x6E\x70\x61\x79\x2E\x6F\x6E\x6C\x69\x6E\x65", "\x6C\x6F\x67"];
+        var dataApi = [];
+
+        function penting() {
+          console[_0xf710[1]](_0xf710[0])
+        }
+        penting()
+        // request api
+        async function getApi(dataKategori) {
+          let filter = '&urutan=murah';
+          let val = 1;
+          let nomPage = val;
+          var filPage = '&page=';
+          const lastPage = 4;
+          for (let page = 1; page <= lastPage; page++) {
+            let linkFetch = `${url}${dataKategori}${filPage}${page}${filter}`;
+            const fetchData = await fetch(linkFetch);
+            const responses = await fetchData.json();
+            const products = responses.produk;
+            products?.forEach((product) => {
+              looping(product);
+            });
+          }
+			
+			const listGroupItems = document.querySelectorAll('.list-group .list-group-item');
+  listGroupItems.forEach(listGroupItem => {
+            listGroupItem.addEventListener('click', function() {
+              listGroupItems.forEach(listGroupItemNonActive => {
+                listGroupItemNonActive.classList.remove('active');
+              })
+              // Buat berubah warna ketika produk nya dipilih / diklik
+              listGroupItem.classList.add('active');
+              // Ambil data dari produk yang di klik, seperti nama produk dan harga nya
+              const [_, hargaProduk] = listGroupItem.children;
+              const popupPembelian = document.getElementById('popup-pembelian');
+              // Munculin popupnya ketika produk nya dipilih
+              popupPembelian.classList.add('show')
+              // Cetak data produk yang dipilih kedalam popup nya
+              const totalPembelian = document.getElementById('total-pembelian');
+              totalPembelian.textContent = hargaProduk.textContent;
+              
+              // Ambil link sesuai dengan produk yang dipilih
+              const tombolBeli = document.getElementById('btn-purchase');
+              const linkProduk = listGroupItem.getAttribute('aria-details');
+              const inputNomorTelepon = document.getElementById('nomor-telepon').value;
+              const inputZone = document.getElementById('zoneId').value;
+              tombolBeli.setAttribute('href', `${linkProduk}?catatan=${inputNomorTelepon}${inputZone}`);
+            })
+          })
+        }
+
+		// jalanlan parameter pertama
+        $('#kategori-pilihan').html(data[0].nama);
+        getApi(data[0].url_kategori);
+        // data klik
+        function dataklik(url, nama, gambar) {
+          let img = document.getElementById('card-img-operator');
+          $('.list-group-item').remove();
+          $('#load').show();
+          img.src = gambar;
+          $('#kategori-pilihan').html(nama);
+          getApi(url);
+        }
+		</script>
+		<script>
+	$("#check-id").click(() => {
+   var idPlayer = $("#nomor-telepon").val()
+   var idZone = $("#zoneId").val()
+   $.ajax({
+      type: "GET",
+      url: `https://api.danizevaro.my.id/true/api/${games}/${idPlayer}/${idZone}/f1b095c53ac7c948ec16e5263ca88d2a`,
+      dataType: "json",
+      beforeSend: function () {
+         $("#cek").html('Loading...')
+      },
+      success: function (response) {
+         $("#cek").html(response.data.username)
+      },
+      error: function (res) {
+         $("#cek").html(res.responseJSON.message)
+
+      }
+   })
+})
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	</body>
+</html>
